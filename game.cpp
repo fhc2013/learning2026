@@ -1,0 +1,271 @@
+#include<bits/stdc++.h>
+#include<windows.h>
+#include<conio.h>
+using namespace std;
+char ch[17][17];
+char name[1005];
+random_device rd;
+bool def;
+mt19937 rnd(rd());
+long long cnt,tk;
+set<pair<int,int> >mp;
+double d;
+stack<char>stk;
+char cr[]="ABCDEF";
+struct box{
+	int _x,_y;
+	int k;
+	box()
+	{
+		_x=_y=0;
+	}
+};
+box x;
+int e,g,_dec;
+void disp()
+{
+	system("cls");
+	for(int i=1;i<=15;++i)
+	{
+		for(int j=1;j<=15;++j) printf("%c",ch[i][j]);
+		printf("\n");
+	}
+	printf("\n");
+	printf("Current score: %lld/%d\n",cnt,e);
+	printf("Current Used Time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+}
+inline void pr(string str)
+{
+	for(auto k:str) printf("%c",k),Sleep(50);
+}
+void wrg()
+{
+	printf("Must use different keys.Try again.\n");
+	Sleep(1000);
+}
+int rg;
+int hx,hy;
+char lft,rgt,hp,qt;
+bool w,gr=true;
+int main()
+{
+	SetConsoleTitleA("Box Hiter");
+	system("color 79");
+	char read=' ';
+	do{
+		system("cls");
+		printf("Box Hiter\n");
+		printf("press s to start the game");
+		for(int i=1;i<=rnd()%3+1;++i) printf("."),Sleep(500);
+		printf("\n");
+	}while(!_kbhit());
+	read=_getch();
+	if(read!='s'&&read!='S') return 0;
+	system("cls");
+	system("color B9");
+	string q("Input your name:");
+	pr(q);
+	scanf("%s",name);
+	Ann:
+	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
+	pr(r);
+	char y=_getch();
+	if(y=='1') e=5,g=5;
+	else if(y=='0') e=3,g=8;
+	else
+	{
+		printf("Invalid input.Try again\n");
+		Sleep(1000);
+		goto Ann;
+	}
+	int qry=MessageBox(NULL,"Do You Want To Use Default Keys?\n(a for left,d for right,q for quit and f for jump,range is 20)","Settings",MB_YESNO);
+	if(qry==IDYES)
+	{
+		def=true;
+		goto Next;
+	}
+	{
+	string okf("Input left key:\n");
+	pr(okf);
+	lft=_getch();
+	Again:
+	string e2("Input right key:\n");
+	pr(e2);
+	rgt=_getch();
+	if(lft==rgt)
+	{
+		wrg();
+		goto Again;
+	}
+	Ag:
+	string e3("Input jump key:\n");
+	pr(e3);
+	hp=_getch();
+	if(hp==lft||hp==rgt)
+	{
+		wrg();
+		goto Ag;		
+	}
+	Rp:
+	string e4("Input quit key:\n");
+	pr(e4);
+	qt=_getch();
+	if(qt==lft||qt==rgt||qt==hp)
+	{
+		wrg();
+		goto Rp;		
+	}
+	Af:
+	string e5("Input the decrease time(the less is 10,the most is 30)\n");
+	pr(e5);
+	cin>>rg;
+	if(rg<10||rg>30)
+	{
+		printf("Invalid input.Try again\n");
+		Sleep(1000);
+		goto Af;		
+	}
+	}	
+	Next:
+	if(def)
+	{
+		rg=20;
+		lft='a';
+		rgt='d';
+		hp='f';
+		qt='q';
+	}
+	srand(time(0));
+	system("color A9");
+	for(int i=1;i<=15;++i) ch[14][i]=ch[15][i]='#';
+	x._x=10;
+	x._y=rand()%14+2;
+	ch[x._x][x._y]='H';
+	hx=10;
+	hy=1;
+	ch[12][1]=ch[13][1]='#';
+	ch[hx][hy]='@';
+	ch[hx+1][hy]='/';
+	d=clock();
+	while(true)
+	{
+		if(e==5)
+		{
+			if(_dec==rg)
+			{
+				--cnt;
+				_dec=0;
+				if(cnt<0)
+				{
+					system("cls");
+					system("color C9");
+					printf("You Lose...\n");
+					Sleep(1500);
+					return 0;
+				}
+			}
+		}
+		++tk;
+		disp();
+		if(!gr)
+		{
+			Sleep(300);
+			ch[hx+2][hy]=ch[hx+1][hy];
+			ch[hx+1][hy]='@';
+			ch[hx][hy]=' ';
+			++hx;
+			if(ch[hx+2][hy]!=' ') gr=true;
+		}
+		if(_kbhit())
+		{
+			char c=_getch();
+			if(c==lft&&hy>1&&ch[hx+1][hy-1]==' ')
+			{
+				w=true;
+				ch[hx+1][hy-1]='\\';
+				ch[hx][hy-1]='@';
+				ch[hx][hy]=ch[hx+1][hy]=' ';
+				--hy;
+			}
+			else if(c==rgt&&hy<15)
+			{
+				w=false;
+				ch[hx+1][hy+1]='/';
+				ch[hx][hy+1]='@';
+				ch[hx][hy]=ch[hx+1][hy]=' ';
+				++hy;
+			}
+			else if(c==qt) return 0;
+			else if(c==hp&&hx>1&&gr)
+			{
+				ch[hx-1][hy]='@';
+				ch[hx][hy]=ch[hx+1][hy];
+				ch[hx+1][hy]=' ';
+				--hx;
+				gr=false;
+				if(ch[hx-1][hy]=='H')
+				{
+					if(!mp.count({hx-1,hy}))
+					{
+						mp.insert({hx-1,hy});
+						++cnt;
+						_dec=0;
+					}
+					printf("\a");
+				}
+			}
+		}
+		if(ch[hx+2][hy]!='#') gr=false;
+		if(cnt==e)
+		{
+			printf("\a");
+			system("cls");
+			system("color E9");
+			printf("You Win!\n");
+			Sleep(500);
+			printf("Used time:%.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+			FILE* fp=fopen("Hiter.txt","a");
+			for(int o=1;o<=20;++o) fprintf(fp,"-");
+			fprintf(fp,"\n");
+			fprintf(fp,"Username: %s\n",name);
+			fprintf(fp,"Used time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+			if(e==5) fprintf(fp,"Difficulty:difficult\n");
+			else
+			fprintf(fp,"Difficulty:easy\n");
+			int rn=rnd();
+			while(rn)
+			{
+				int rem=rn%16;
+				if(rem<=9&&rem>=0) stk.push(rem+'0');
+				else
+				stk.push(cr[rem-10]);
+				rn/=16;
+			}
+			fprintf(fp,"Code:");
+			while(stk.size())
+			{
+				fprintf(fp,"%c",stk.top());
+				stk.pop();
+			}
+			fprintf(fp,"\n");
+			time_t tm;
+			time(&tm);
+			string y(ctime(&tm));
+			fprintf(fp,y.c_str());
+			for(int o=1;o<=20;++o) fprintf(fp,"-");
+			fprintf(fp,"\n");
+			Sleep(2000);
+			return 0;
+		}
+		if(x.k==g)
+		{
+			ch[x._x][x._y]=' ';
+			x._y=rand()%14+2;
+			x.k=0;
+			ch[x._x][x._y]='H';
+		}
+		++x.k;
+		++_dec;
+	}
+	return 0;
+}
