@@ -116,6 +116,8 @@ int main()
 		goto Rp;		
 	}
 	Af:
+	if(e==5)
+	{
 	string e5("Input the decrease time(the less is 10,the most is 30)\n");
 	pr(e5);
 	cin>>rg;
@@ -124,6 +126,7 @@ int main()
 		printf("Invalid input.Try again\n");
 		Sleep(1000);
 		goto Af;		
+	}
 	}
 	}	
 	Next:
