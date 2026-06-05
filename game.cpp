@@ -5,7 +5,7 @@ using namespace std;
 char ch[17][17];
 char name[1005];
 random_device rd;
-bool def;
+bool def,dsp;
 mt19937 rnd(rd());
 long long cnt,tk;
 set<pair<int,int> >mp;
@@ -31,8 +31,11 @@ void disp()
 		printf("\n");
 	}
 	printf("\n");
-	printf("Current score: %lld/%d\n",cnt,e);
-	printf("Current Used Time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+	if(dsp)
+	{
+		printf("Current score: %lld/%d\n",cnt,e);
+		printf("Current Used Time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+	}
 }
 inline void pr(string str)
 {
@@ -45,7 +48,7 @@ void wrg()
 }
 int rg;
 int hx,hy;
-char lft,rgt,hp,qt;
+char lft,rgt,hp,qt,ds;
 bool w,gr=true;
 int main()
 {
@@ -78,7 +81,7 @@ int main()
 		Sleep(1000);
 		goto Ann;
 	}
-	int qry=MessageBox(NULL,"Do You Want To Use Default Keys?\n(a for left,d for right,q for quit and f for jump,range is 20)","Settings",MB_YESNO);
+	int qry=MessageBox(NULL,"Do You Want To Use Default Keys?\n(a for left,d for right,q for quit and f for jump,s for display set,range is 20)","Settings",MB_YESNO);
 	if(qry==IDYES)
 	{
 		def=true;
@@ -115,10 +118,19 @@ int main()
 		wrg();
 		goto Rp;		
 	}
+	Rpt:
+	string e5("Input display set key:\n");
+	pr(e5);
+	ds=_getch();
+	if(ds==lft||ds==rgt||ds==hp||ds==qt)
+	{
+		wrg();
+		goto Rpt;
+	}
 	Af:
 	if(e==5)
 	{
-	string e5("Input the decrease time(the less is 10,the most is 30)\n");
+	string e6("Input the decrease time(the less is 10,the most is 30)\n");
 	pr(e5);
 	cin>>rg;
 	if(rg<10||rg>30)
@@ -137,6 +149,7 @@ int main()
 		rgt='d';
 		hp='f';
 		qt='q';
+		ds='s';
 	}
 	srand(time(0));
 	system("color A9");
@@ -217,6 +230,7 @@ int main()
 					printf("\a");
 				}
 			}
+			else if(c==ds) dsp=!dsp;
 		}
 		if(ch[hx+2][hy]!='#') gr=false;
 		if(cnt==e)
