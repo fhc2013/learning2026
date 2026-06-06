@@ -249,7 +249,7 @@ int main()
 			if(e==5) fprintf(fp,"Difficulty:difficult\n");
 			else
 			fprintf(fp,"Difficulty:easy\n");
-			int rn=rnd();
+			unsigned int rn=rnd();
 			while(rn)
 			{
 				int rem=rn%16;
