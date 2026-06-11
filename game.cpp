@@ -5,7 +5,7 @@ using namespace std;
 char ch[17][17];
 char name[1005];
 random_device rd;
-bool def,dsp;
+bool def,dsp=true;
 mt19937 rnd(rd());
 long long cnt,tk;
 set<pair<int,int> >mp;
@@ -35,6 +35,7 @@ void disp()
 	{
 		printf("Current score: %lld/%d\n",cnt,e);
 		printf("Current Used Time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+		printf("Current ticks:%lld\n",tk);
 	}
 }
 inline void pr(string str)
@@ -131,7 +132,7 @@ int main()
 	if(e==5)
 	{
 	string e6("Input the decrease time(the less is 10,the most is 30)\n");
-	pr(e5);
+	pr(e6);
 	cin>>rg;
 	if(rg<10||rg>30)
 	{
@@ -241,7 +242,7 @@ int main()
 			printf("You Win!\n");
 			Sleep(500);
 			printf("Used time:%.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
-			FILE* fp=fopen("Hiter.txt","a");
+			FILE* fp=fopen("Box_hiter.dat","a");
 			for(int o=1;o<=20;++o) fprintf(fp,"-");
 			fprintf(fp,"\n");
 			fprintf(fp,"Username: %s\n",name);
@@ -283,6 +284,14 @@ int main()
 		}
 		++x.k;
 		++_dec;
+		if(tk>=3000)
+		{
+			system("cls");
+			system("color C9");
+			printf("You Lose...\n");
+			Sleep(1000);
+			return 0;
+		}
 	}
 	return 0;
 }
