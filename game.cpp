@@ -188,7 +188,7 @@ int main()
 		disp();
 		if(!gr&&!mv)
 		{
-			Sleep(300);
+			Sleep(100);
 			ch[hx+2][hy]=ch[hx+1][hy];
 			ch[hx+1][hy]='@';
 			ch[hx][hy]=' ';
@@ -289,12 +289,12 @@ int main()
 		}
 		++x.k;
 		++_dec;
-		if(tk>=3000)
+		if(tk>=3020)
 		{
 			system("cls");
 			system("color C9");
 			printf("You Lose...\n");
-			Sleep(1000);
+			Sleep(1500);
 			return 0;
 		}
 	}
