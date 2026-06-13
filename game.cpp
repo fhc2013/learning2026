@@ -22,6 +22,7 @@ struct box{
 };
 box x;
 int e,g,_dec;
+bool mv;
 void disp()
 {
 	system("cls");
@@ -163,6 +164,7 @@ int main()
 	ch[12][1]=ch[13][1]='#';
 	ch[hx][hy]='@';
 	ch[hx+1][hy]='/';
+	ch[14][rnd()%14+2]=' ';
 	d=clock();
 	while(true)
 	{
@@ -184,7 +186,7 @@ int main()
 		}
 		++tk;
 		disp();
-		if(!gr)
+		if(!gr&&!mv)
 		{
 			Sleep(300);
 			ch[hx+2][hy]=ch[hx+1][hy];
@@ -193,6 +195,7 @@ int main()
 			++hx;
 			if(ch[hx+2][hy]!=' ') gr=true;
 		}
+		if(mv=true) mv=false;
 		if(_kbhit())
 		{
 			char c=_getch();
@@ -204,7 +207,7 @@ int main()
 				ch[hx][hy]=ch[hx+1][hy]=' ';
 				--hy;
 			}
-			else if(c==rgt&&hy<15)
+			else if(c==rgt&&hy<15&&(hx==10||hx==12||ch[hx+1][hy+1]==' '))
 			{
 				w=false;
 				ch[hx+1][hy+1]='/';
@@ -215,6 +218,7 @@ int main()
 			else if(c==qt) return 0;
 			else if(c==hp&&hx>1&&gr)
 			{
+				mv=true;
 				ch[hx-1][hy]='@';
 				ch[hx][hy]=ch[hx+1][hy];
 				ch[hx+1][hy]=' ';
@@ -234,6 +238,7 @@ int main()
 			else if(c==ds) dsp=!dsp;
 		}
 		if(ch[hx+2][hy]!='#') gr=false;
+		if(ch[hx+2][hy]=='#') gr=true;
 		if(cnt==e)
 		{
 			printf("\a");
