@@ -252,9 +252,9 @@ int main()
 			fprintf(fp,"\n");
 			fprintf(fp,"Username: %s\n",name);
 			fprintf(fp,"Used time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
-			if(e==5) fprintf(fp,"Difficulty:difficult\n");
+			if(e==5) fprintf(fp,"Difficulty: difficult\n");
 			else
-			fprintf(fp,"Difficulty:easy\n");
+			fprintf(fp,"Difficulty: easy\n");
 			unsigned int rn=rnd();
 			while(rn)
 			{
