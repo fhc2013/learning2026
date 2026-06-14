@@ -165,6 +165,12 @@ int main()
 	ch[hx][hy]='@';
 	ch[hx+1][hy]='/';
 	ch[14][rnd()%14+2]=' ';
+	if(e==5)
+	{
+	int kg=rnd()%14+2;
+	while(ch[14][kg-1]!='#'||ch[14][kg]!='#'||ch[14][kg+1]!='#') kg=rnd()%14+2;
+	ch[14][kg]=' ';
+	}
 	d=clock();
 	while(true)
 	{
