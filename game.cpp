@@ -213,7 +213,7 @@ int main()
 				ch[hx][hy]=ch[hx+1][hy]=' ';
 				--hy;
 			}
-			else if(c==rgt&&hy<15&&(hx==10||hx==12||ch[hx+1][hy+1]==' '))
+			else if(c==rgt&&hy<15&&(hx==10||hx==11||hx==12||ch[hx+1][hy+1]==' '))
 			{
 				w=false;
 				ch[hx+1][hy+1]='/';
