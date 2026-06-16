@@ -20,6 +20,25 @@ struct box{
 		_x=_y=0;
 	}
 };
+struct plnt{
+	int hx,hy,k;
+	char c;
+	plnt()
+	{
+		hx=1;
+		hy=15;
+		k=0;
+		c='O';
+		ch[hx][hy]=c;
+	}
+	void mvpl()
+	{
+    	ch[hx][hy]=' ';
+    	hy--;
+		if(hy<1) hy=15;
+    	ch[hx][hy]=c;
+	}
+}; 
 box x;
 int e,g,_dec;
 bool mv;
@@ -54,6 +73,8 @@ char lft,rgt,hp,qt,ds;
 bool w,gr=true;
 int main()
 {
+	for(int i=1;i<=15;++i) ch[1][i]=' ';
+	plnt plt;
 	SetConsoleTitleA("Box Hiter");
 	system("color 79");
 	char read=' ';
@@ -190,6 +211,12 @@ int main()
 				}
 			}
 		}
+		++plt.k;
+		if(plt.k==8)
+		{
+			plt.k=0;
+			plt.mvpl();
+		}
 		++tk;
 		disp();
 		if(!gr&&!mv)
@@ -201,7 +228,7 @@ int main()
 			++hx;
 			if(ch[hx+2][hy]!=' ') gr=true;
 		}
-		if(mv=true) mv=false;
+		if(mv==true) mv=false;
 		if(_kbhit())
 		{
 			char c=_getch();
