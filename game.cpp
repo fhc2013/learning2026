@@ -26,7 +26,7 @@ struct plnt{
 	plnt()
 	{
 		hx=1;
-		hy=15;
+		hy=16;
 		k=0;
 		c='O';
 		ch[hx][hy]=c;
@@ -35,7 +35,7 @@ struct plnt{
 	{
     	ch[hx][hy]=' ';
     	hy--;
-		if(hy<1) hy=15;
+		if(hy<1) hy=16;
     	ch[hx][hy]=c;
 	}
 }; 
@@ -111,14 +111,20 @@ int main()
 		goto Next;
 	}
 	{
+	A:
 	string okf("Input left key:\n");
 	pr(okf);
 	lft=_getch();
+	if(lft<'a'||lft>'z')
+	{
+		wrg();
+		goto A;
+	}
 	Again:
 	string e2("Input right key:\n");
 	pr(e2);
 	rgt=_getch();
-	if(lft==rgt)
+	if(lft==rgt||rgt<'a'||rgt>'z')
 	{
 		wrg();
 		goto Again;
@@ -127,7 +133,7 @@ int main()
 	string e3("Input jump key:\n");
 	pr(e3);
 	hp=_getch();
-	if(hp==lft||hp==rgt)
+	if(hp==lft||hp==rgt||hp<'a'||hp>'z')
 	{
 		wrg();
 		goto Ag;		
@@ -136,7 +142,7 @@ int main()
 	string e4("Input quit key:\n");
 	pr(e4);
 	qt=_getch();
-	if(qt==lft||qt==rgt||qt==hp)
+	if(qt==lft||qt==rgt||qt==hp||qt<'a'||qt>'z')
 	{
 		wrg();
 		goto Rp;		
@@ -145,7 +151,7 @@ int main()
 	string e5("Input display set key:\n");
 	pr(e5);
 	ds=_getch();
-	if(ds==lft||ds==rgt||ds==hp||ds==qt)
+	if(ds==lft||ds==rgt||ds==hp||ds==qt||ds<'a'||ds>'z')
 	{
 		wrg();
 		goto Rpt;
@@ -218,6 +224,13 @@ int main()
 			plt.mvpl();
 		}
 		++tk;
+		for(int i=1;i<=15;++i) ch[3][i]=' ';
+		for(int i=1;i<=5;++i)
+		{
+			int gh=rnd()%15+1;
+			while(ch[3][gh]=='#') gh=rnd()%15+1;
+			ch[3][gh]='_';
+		}
 		disp();
 		if(!gr&&!mv)
 		{
@@ -232,6 +245,7 @@ int main()
 		if(_kbhit())
 		{
 			char c=_getch();
+			c=tolower(c);
 			if(c==lft&&hy>1&&ch[hx+1][hy-1]==' ')
 			{
 				w=true;
