@@ -64,7 +64,7 @@ inline void pr(string str)
 }
 void wrg()
 {
-	printf("Must use different keys.Try again.\n");
+	printf("Your input is invalid.Try again.\n");
 	Sleep(1000);
 }
 int rg;
@@ -230,6 +230,12 @@ int main()
 			int gh=rnd()%15+1;
 			while(ch[3][gh]=='#') gh=rnd()%15+1;
 			ch[3][gh]='_';
+		}
+		for(int i=1;i<=15;++i) ch[2][i]=' ';
+		if(plt.hy==16)
+		{
+			int tot=rnd()%10+1;
+			for(int i=1;i<=tot;++i) ch[2][rnd()%15+1]='*';
 		}
 		disp();
 		if(!gr&&!mv)
