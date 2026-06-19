@@ -39,6 +39,7 @@ struct plnt{
     	ch[hx][hy]=c;
 	}
 }; 
+vector<int>star;
 box x;
 int e,g,_dec;
 bool mv;
@@ -232,10 +233,24 @@ int main()
 			ch[3][gh]='_';
 		}
 		for(int i=1;i<=15;++i) ch[2][i]=' ';
+		if(plt.hy!=16) star.clear();
 		if(plt.hy==16)
 		{
-			int tot=rnd()%10+1;
-			for(int i=1;i<=tot;++i) ch[2][rnd()%15+1]='*';
+			if(star.size())
+			{
+				if(tk&1)
+				{
+					for(auto s:star) ch[2][s]='*';
+				}
+				else
+				for(auto s:star) ch[2][s]=' ';
+			}
+			else
+			{
+				int tt=rnd()%10+1;
+				for(int i=1;i<=tt;++i) star.push_back(rnd()%15+1);
+				for(auto s:star) ch[2][s]='*';
+			}
 		}
 		disp();
 		if(!gr&&!mv)
