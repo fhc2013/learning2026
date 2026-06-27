@@ -41,7 +41,7 @@ struct plnt{
 }; 
 vector<int>star;
 box x;
-int e,g,_dec;
+int e,g,_dec,cb=1,cbtm;
 bool mv;
 void disp()
 {
@@ -55,8 +55,9 @@ void disp()
 	if(dsp)
 	{
 		printf("Current score: %lld/%d\n",cnt,e);
-		printf("Current Used Time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
-		printf("Current ticks:%lld\n",tk);
+		printf("Current used time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+		printf("Current ticks: %lld\n",tk);
+		if(cb==2) printf("Remain combo time: %d\n",cbtm);
 	}
 }
 inline void pr(string str)
@@ -297,8 +298,10 @@ int main()
 					if(!mp.count({hx-1,hy}))
 					{
 						mp.insert({hx-1,hy});
-						++cnt;
+						cnt+=cb;
 						_dec=0;
+						cb=2;
+						cbtm=30;
 					}
 					printf("\a");
 				}
@@ -357,6 +360,12 @@ int main()
 		}
 		++x.k;
 		++_dec;
+		--cbtm;
+		if(cbtm<=0)
+		{
+			cbtm=0;
+			cb=1;
+		}
 		if(tk>=3020)
 		{
 			system("cls");
