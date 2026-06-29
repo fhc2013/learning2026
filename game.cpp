@@ -300,8 +300,11 @@ int main()
 						mp.insert({hx-1,hy});
 						cnt+=cb;
 						_dec=0;
-						cb=2;
-						cbtm=30;
+						if(cb==1&&!cbtm)
+						{
+							cb=2;
+							cbtm=30;							
+						}
 					}
 					printf("\a");
 				}
@@ -310,7 +313,7 @@ int main()
 		}
 		if(ch[hx+2][hy]!='#') gr=false;
 		if(ch[hx+2][hy]=='#') gr=true;
-		if(cnt==e)
+		if(cnt>=e)
 		{
 			printf("\a");
 			system("cls");
