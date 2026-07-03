@@ -91,9 +91,25 @@ int main()
 	if(read!='s'&&read!='S') return 0;
 	system("cls");
 	system("color B9");
+	FILE* rd=fopen("player.dat","r");
+	if(rd!=nullptr)
+	{
+		int m=MessageBox(NULL,"Do you want to use your last username?","Username",MB_YESNO);
+		if(m==IDYES)
+		{
+			fseek(rd,0,SEEK_END);
+    		int sz=ftell(rd);
+    		fseek(rd,0,SEEK_SET);
+    		fread(name,1,sz,rd);
+    		name[sz]='\0';
+    		goto Ann;
+		}
+	}
+	{
 	string q("Input your name:");
 	pr(q);
 	scanf("%s",name);
+	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
 	pr(r);
@@ -351,6 +367,8 @@ int main()
 			fprintf(fp,y.c_str());
 			for(int o=1;o<=20;++o) fprintf(fp,"-");
 			fprintf(fp,"\n");
+			FILE* f2=fopen("player.dat","w");
+			fprintf(f2,name);
 			Sleep(2000);
 			return 0;
 		}
