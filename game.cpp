@@ -106,10 +106,10 @@ int main()
 		}
 	}
 	{
-	string q("Input your name:");
-	pr(q);
-	scanf("%s",name);
-	if(name[0]==' ')
+	string qw("Do you want to use default name?press d for default\n");
+	pr(qw);
+	char qn=_getch();
+	if(qn=='d')
 	{
 		name[0]='G';
 		name[1]='u';
@@ -117,7 +117,15 @@ int main()
 		name[3]='s';
 		name[4]='t';
 		name[5]='\0';
+		goto Nm;		
 	}
+	{
+		string q("Input your name:");
+		pr(q);
+		scanf("%s",name);		
+	}
+	Nm:
+	;
 	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
