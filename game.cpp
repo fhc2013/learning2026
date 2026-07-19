@@ -35,7 +35,7 @@ struct plnt{
 	{
     	ch[hx][hy]=' ';
     	hy--;
-		if(hy<1) hy=16;
+		if(hy<0) hy=16;
     	ch[hx][hy]=c;
 	}
 }; 
@@ -109,6 +109,15 @@ int main()
 	string q("Input your name:");
 	pr(q);
 	scanf("%s",name);
+	if(name[0]==' ')
+	{
+		name[0]='G';
+		name[1]='u';
+		name[2]='e';
+		name[3]='s';
+		name[4]='t';
+		name[5]='\0';
+	}
 	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
@@ -251,7 +260,7 @@ int main()
 		}
 		for(int i=1;i<=15;++i) ch[2][i]=' ';
 		if(plt.hy!=16) star.clear();
-		if(plt.hy==16)
+		if(plt.hy==16||plt.hy==0)
 		{
 			if(star.size())
 			{
@@ -300,7 +309,16 @@ int main()
 				ch[hx][hy]=ch[hx+1][hy]=' ';
 				++hy;
 			}
-			else if(c==qt) return 0;
+			else if(c==qt)
+			{
+				FILE* wp=fopen("world.dat","w");
+				for(int i=1;i<=15;++i)
+				{
+					for(int j=1;j<=15;++j) fprintf(wp,"%c",ch[i][j]);
+					fprintf(wp,"\n");
+				}
+				return 0;
+			}
 			else if(c==hp&&hx>1&&gr)
 			{
 				mv=true;
