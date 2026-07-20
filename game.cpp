@@ -116,7 +116,10 @@ int main()
 		name[2]='e';
 		name[3]='s';
 		name[4]='t';
-		name[5]='\0';
+		int gx=rnd()%9+1;
+		char r=gx+'0';
+		name[5]=r;
+		name[6]='\0';
 		goto Nm;		
 	}
 	{
