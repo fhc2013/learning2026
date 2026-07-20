@@ -270,7 +270,7 @@ int main()
 			ch[3][gh]='_';
 		}
 		for(int i=1;i<=15;++i) ch[2][i]=' ';
-		if(plt.hy!=16) star.clear();
+		if(plt.hy!=16&&plt.hy!=0) star.clear();
 		if(plt.hy==16||plt.hy==0)
 		{
 			if(star.size())
