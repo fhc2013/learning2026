@@ -394,6 +394,7 @@ int main()
 			time(&tm);
 			string y(ctime(&tm));
 			fprintf(fp,y.c_str());
+			fprintf(fp,"Used ticks:%lld\n",tk);
 			for(int o=1;o<=20;++o) fprintf(fp,"-");
 			fprintf(fp,"\n");
 			FILE* f2=fopen("player.dat","w");
