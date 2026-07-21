@@ -329,6 +329,7 @@ int main()
 					for(int j=1;j<=15;++j) fprintf(wp,"%c",ch[i][j]);
 					fprintf(wp,"\n");
 				}
+				fclose(wp);
 				return 0;
 			}
 			else if(c==hp&&hx>1&&gr)
@@ -400,6 +401,8 @@ int main()
 			fprintf(fp,"\n");
 			FILE* f2=fopen("player.dat","w");
 			fprintf(f2,name);
+			fclose(f2);
+			fclose(fp);
 			Sleep(2000);
 			return 0;
 		}
