@@ -58,6 +58,7 @@ void disp()
 		printf("Current used time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
 		printf("Current ticks: %lld\n",tk);
 		if(cb==2) printf("Remain combo time: %d\n",cbtm);
+		if(cbtm>=25) printf("Combo time!\n");
 	}
 }
 inline void pr(string str)
