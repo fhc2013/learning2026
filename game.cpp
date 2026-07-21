@@ -107,6 +107,7 @@ int main()
     		goto Ann;
 		}
 	}
+	fclose(rd);
 	{
 	string qw("Do you want to use default name?press d for default\n");
 	pr(qw);
