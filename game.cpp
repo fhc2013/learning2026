@@ -82,7 +82,7 @@ int main()
 	char read=' ';
 	do{
 		system("cls");
-		printf("Box Hiter\n");
+		printf("Welcome to Box Hiter!\n");
 		printf("press s to start the game");
 		for(int i=1;i<=rnd()%3+1;++i) printf("."),Sleep(500);
 		printf("\n");
@@ -383,7 +383,7 @@ int main()
 				stk.push(cr[rem-10]);
 				rn/=16;
 			}
-			fprintf(fp,"Code:");
+			fprintf(fp,"Code: ");
 			while(stk.size())
 			{
 				fprintf(fp,"%c",stk.top());
@@ -394,7 +394,7 @@ int main()
 			time(&tm);
 			string y(ctime(&tm));
 			fprintf(fp,y.c_str());
-			fprintf(fp,"Used ticks:%lld\n",tk);
+			fprintf(fp,"Used ticks: %lld ticks\n",tk);
 			for(int o=1;o<=20;++o) fprintf(fp,"-");
 			fprintf(fp,"\n");
 			FILE* f2=fopen("player.dat","w");
