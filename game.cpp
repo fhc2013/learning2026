@@ -59,6 +59,7 @@ void disp()
 		printf("Current ticks: %lld\n",tk);
 		if(cb==2) printf("Remain combo time: %d\n",cbtm);
 		if(cbtm>=25) printf("Combo time!\n");
+		if(tk>=3000) printf("You only has %lld time",3020-tk);
 	}
 }
 inline void pr(string str)
@@ -107,29 +108,29 @@ int main()
 		}
 	}
 	{
-		string qw("Do you want to use default name?press d for default\n");
-		pr(qw);
-		char qn=_getch();
-		if(qn=='d')
-		{
-			name[0]='G';
-			name[1]='u';
-			name[2]='e';
-			name[3]='s';
-			name[4]='t';
-			int gx=rnd()%9+1;
-			char r=gx+'0';
-			name[5]=r;
-			name[6]='\0';
-			goto Nm;		
-		}
-		{
-			string q("Input your name:");
-			pr(q);
-			scanf("%s",name);		
-		}
-		Nm:
-		;
+	string qw("Do you want to use default name?press d for default\n");
+	pr(qw);
+	char qn=_getch();
+	if(qn=='d')
+	{
+		name[0]='G';
+		name[1]='u';
+		name[2]='e';
+		name[3]='s';
+		name[4]='t';
+		int gx=rnd()%9+1;
+		char r=gx+'0';
+		name[5]=r;
+		name[6]='\0';
+		goto Nm;		
+	}
+	{
+		string q("Input your name:");
+		pr(q);
+		scanf("%s",name);		
+	}
+	Nm:
+	;
 	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
