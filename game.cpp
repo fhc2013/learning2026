@@ -107,29 +107,29 @@ int main()
 		}
 	}
 	{
-	string qw("Do you want to use default name?press d for default\n");
-	pr(qw);
-	char qn=_getch();
-	if(qn=='d')
-	{
-		name[0]='G';
-		name[1]='u';
-		name[2]='e';
-		name[3]='s';
-		name[4]='t';
-		int gx=rnd()%9+1;
-		char r=gx+'0';
-		name[5]=r;
-		name[6]='\0';
-		goto Nm;		
-	}
-	{
-		string q("Input your name:");
-		pr(q);
-		scanf("%s",name);		
-	}
-	Nm:
-	;
+		string qw("Do you want to use default name?press d for default\n");
+		pr(qw);
+		char qn=_getch();
+		if(qn=='d')
+		{
+			name[0]='G';
+			name[1]='u';
+			name[2]='e';
+			name[3]='s';
+			name[4]='t';
+			int gx=rnd()%9+1;
+			char r=gx+'0';
+			name[5]=r;
+			name[6]='\0';
+			goto Nm;		
+		}
+		{
+			string q("Input your name:");
+			pr(q);
+			scanf("%s",name);		
+		}
+		Nm:
+		;
 	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
@@ -150,64 +150,64 @@ int main()
 		goto Next;
 	}
 	{
-	A:
-	string okf("Input left key:\n");
-	pr(okf);
-	lft=_getch();
-	if(lft<'a'||lft>'z')
-	{
-		wrg();
-		goto A;
-	}
-	Again:
-	string e2("Input right key:\n");
-	pr(e2);
-	rgt=_getch();
-	if(lft==rgt||rgt<'a'||rgt>'z')
-	{
-		wrg();
-		goto Again;
-	}
-	Ag:
-	string e3("Input jump key:\n");
-	pr(e3);
-	hp=_getch();
-	if(hp==lft||hp==rgt||hp<'a'||hp>'z')
-	{
-		wrg();
-		goto Ag;		
-	}
-	Rp:
-	string e4("Input quit key:\n");
-	pr(e4);
-	qt=_getch();
-	if(qt==lft||qt==rgt||qt==hp||qt<'a'||qt>'z')
-	{
-		wrg();
-		goto Rp;		
-	}
-	Rpt:
-	string e5("Input display set key:\n");
-	pr(e5);
-	ds=_getch();
-	if(ds==lft||ds==rgt||ds==hp||ds==qt||ds<'a'||ds>'z')
-	{
-		wrg();
-		goto Rpt;
-	}
-	Af:
-	if(e==5)
-	{
-	string e6("Input the decrease time(the less is 10,the most is 30)\n");
-	pr(e6);
-	cin>>rg;
-	if(rg<10||rg>30)
-	{
-		printf("Invalid input.Try again\n");
-		Sleep(1000);
-		goto Af;		
-	}
-	}
+		A:
+		string okf("Input left key:\n");
+		pr(okf);
+		lft=_getch();
+		if(lft<'a'||lft>'z')
+		{
+			wrg();
+			goto A;
+		}
+		Again:
+		string e2("Input right key:\n");
+		pr(e2);
+		rgt=_getch();
+		if(lft==rgt||rgt<'a'||rgt>'z')
+		{
+			wrg();
+			goto Again;
+		}
+		Ag:
+		string e3("Input jump key:\n");
+		pr(e3);
+		hp=_getch();
+		if(hp==lft||hp==rgt||hp<'a'||hp>'z')
+		{
+			wrg();
+			goto Ag;		
+		}
+		Rp:
+		string e4("Input quit key:\n");
+		pr(e4);
+		qt=_getch();
+		if(qt==lft||qt==rgt||qt==hp||qt<'a'||qt>'z')
+		{
+			wrg();
+			goto Rp;		
+		}
+		Rpt:
+		string e5("Input display set key:\n");
+		pr(e5);
+		ds=_getch();
+		if(ds==lft||ds==rgt||ds==hp||ds==qt||ds<'a'||ds>'z')
+		{
+			wrg();
+			goto Rpt;
+		}
+		Af:
+		if(e==5)
+		{
+			string e6("Input the decrease time(the less is 10,the most is 30)\n");
+			pr(e6);
+			cin>>rg;
+			if(rg<10||rg>30)
+			{
+				printf("Invalid input.Try again\n");
+				Sleep(1000);
+				goto Af;		
+			}
+		}
 	}	
 	Next:
 	if(def)
