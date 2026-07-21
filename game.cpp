@@ -128,7 +128,7 @@ int main()
 	{
 		string q("Input your name:");
 		pr(q);
-		scanf("%s",name);		
+		scanf("%990s",name);		
 	}
 	Nm:
 	;
