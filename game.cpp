@@ -109,29 +109,27 @@ int main()
 	}
 	fclose(rd);
 	{
-	string qw("Do you want to use default name?press d for default\n");
-	pr(qw);
-	char qn=_getch();
-	if(qn=='d')
-	{
-		name[0]='G';
-		name[1]='u';
-		name[2]='e';
-		name[3]='s';
-		name[4]='t';
-		int gx=rnd()%9+1;
-		char r=gx+'0';
-		name[5]=r;
-		name[6]='\0';
-		goto Nm;		
-	}
-	{
-		string q("Input your name:");
-		pr(q);
-		scanf("%990s",name);		
-	}
-	Nm:
-	;
+		int xx=MessageBox(NULL,"Do you want to use default name?","Default name",MB_YESNO);
+		if(xx==IDYES)
+		{
+			name[0]='G';
+			name[1]='u';
+			name[2]='e';
+			name[3]='s';
+			name[4]='t';
+			int gx=rnd()%9+1;
+			char r=gx+'0';
+			name[5]=r;
+			name[6]='\0';
+			goto Nm;		
+		}
+		{
+			string q("Input your name:");
+			pr(q);
+			scanf("%990s",name);		
+		}
+		Nm:
+		;
 	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
