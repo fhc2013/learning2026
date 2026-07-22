@@ -93,6 +93,7 @@ int main()
 	if(read!='s'&&read!='S') return 0;
 	system("cls");
 	system("color B9");
+	SetConsoleTitleA("Settings");
 	FILE* rd=fopen("player.dat","r");
 	if(rd!=nullptr)
 	{
@@ -238,6 +239,7 @@ int main()
 	ch[14][kg]=' ';
 	}
 	d=clock();
+	SetConsoleTitleA("Box Hiter");
 	while(true)
 	{
 		if(e==5)
