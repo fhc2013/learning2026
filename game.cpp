@@ -84,7 +84,7 @@ int main()
 {
 	for(int i=1;i<=15;++i) ch[1][i]=' ';
 	plnt plt;
-	SetConsoleTitleA("Box Hiter");
+	SetConsoleTitleA("Welcome to Box Hiter");
 	system("color 79");
 	char read=' ';
 	do{
