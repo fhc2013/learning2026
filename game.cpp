@@ -416,19 +416,6 @@ int main()
 		if(x.k==g)
 		{
 			ch[x._x][x._y]=' ';
-			if(x._y-hy<=2)
-			{
-				if(x._y==1) x._y=15;
-				else
-				--x._y;
-			}
-			else if(hy-x._y<=2)
-			{
-				if(x._y==15) x._y=1;
-				else
-				++x._y;
-			}
-			else
 			x._y=rand()%14+2;
 			x.k=0;
 			ch[x._x][x._y]='H';
