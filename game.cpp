@@ -65,6 +65,10 @@ void disp()
 			for(int i=1;i<=3020-tk;++i) printf("U");
 			printf("\n");
 		}
+		printf("Difficulty: ");
+		if(e==5) printf("difficult\n");
+		else
+		printf("easy\n");
 	}
 }
 inline void pr(string str)
@@ -239,9 +243,9 @@ int main()
 	ch[14][rnd()%14+2]=' ';
 	if(e==5)
 	{
-	int kg=rnd()%14+2;
-	while(ch[14][kg-1]!='#'||ch[14][kg]!='#'||ch[14][kg+1]!='#') kg=rnd()%14+2;
-	ch[14][kg]=' ';
+		int kg=rnd()%14+2;
+		while(ch[14][kg-1]!='#'||ch[14][kg]!='#'||ch[14][kg+1]!='#') kg=rnd()%14+2;
+		ch[14][kg]=' ';
 	}
 	d=clock();
 	SetConsoleTitleA("Box Hiter");
