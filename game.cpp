@@ -56,12 +56,12 @@ void disp()
 	{
 		printf("Current score: %lld/%d\n",cnt,e);
 		printf("Current used time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
-		printf("Current ticks: %lld\n",tk);
+		printf("Current used ticks: %lld\n",tk);
 		if(cb==2) printf("Remain combo time: %d\n",cbtm);
 		if(cbtm>=25) printf("Combo time!\n");
 		if(tk>=3000)
 		{
-			printf("Remaining time: ");
+			printf("Remaining ticks: ");
 			for(int i=1;i<=3020-tk;++i) printf("U");
 			printf("\n");
 		}
