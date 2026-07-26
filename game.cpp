@@ -91,12 +91,20 @@ int main()
 	SetConsoleTitleA("Welcome to Box Hiter");
 	system("color 79");
 	char read=' ';
+	bool firs=true;
 	do{
 		system("cls");
+		if(firs)
+		{
+			string gd("Welcome to Box Hiter!\n");
+			pr(gd);
+		}
+		else
 		printf("Welcome to Box Hiter!\n");
 		printf("press s to start the game");
 		for(int i=1;i<=rnd()%3+1;++i) printf("."),Sleep(500);
 		printf("\n");
+		firs=false;
 	}while(!_kbhit());
 	read=_getch();
 	if(read!='s'&&read!='S') return 0;
