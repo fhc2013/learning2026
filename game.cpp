@@ -98,10 +98,14 @@ int main()
 		{
 			string gd("Welcome to Box Hiter!\n");
 			pr(gd);
+			string rt("press s to start the game");
+			pr(rt);
 		}
 		else
-		printf("Welcome to Box Hiter!\n");
-		printf("press s to start the game");
+		{
+			printf("Welcome to Box Hiter!\n");
+			printf("press s to start the game");			
+		}
 		for(int i=1;i<=rnd()%3+1;++i) printf("."),Sleep(500);
 		printf("\n");
 		firs=false;
