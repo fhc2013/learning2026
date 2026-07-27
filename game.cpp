@@ -242,7 +242,9 @@ int main()
 		ds='s';
 	}
 	srand(time(0));
-	system("color A9");
+	if(e==3) system("color A9");
+	else
+	system("color A4");
 	for(int i=1;i<=15;++i) ch[14][i]=ch[15][i]='#';
 	x._x=10;
 	x._y=rand()%14+2;
@@ -313,7 +315,6 @@ int main()
 				for(auto s:star) ch[2][s]='*';
 			}
 		}
-		disp();
 		if(!gr&&!mv)
 		{
 			Sleep(100);
@@ -452,6 +453,7 @@ int main()
 			Sleep(1500);
 			return 0;
 		}
+		disp();
 	}
 	return 0;
 }
