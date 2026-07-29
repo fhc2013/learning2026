@@ -126,6 +126,10 @@ int main()
     		fseek(rd,0,SEEK_SET);
     		fread(name,1,sz,rd);
     		name[sz]='\0';
+    		string f("Welcome back, ");
+    		f+=name;
+    		f+="\n";
+    		pr(f);
     		goto Ann;
 		}
 	}
