@@ -41,6 +41,7 @@ struct plnt{
 }; 
 vector<int>star;
 box x;
+int rg;
 int e,g,_dec,cb=1,cbtm;
 bool mv;
 void disp()
@@ -69,6 +70,7 @@ void disp()
 		if(e==5) printf("difficult\n");
 		else
 		printf("easy\n");
+		if(_dec&&e==5) printf("%d ticks to lose 1 point",rg-_dec);
 	}
 }
 inline void pr(string str)
@@ -80,7 +82,6 @@ void wrg()
 	printf("Your input is invalid.Try again.\n");
 	Sleep(1000);
 }
-int rg;
 int hx,hy;
 char lft,rgt,hp,qt,ds;
 bool w,gr=true;
