@@ -281,6 +281,8 @@ int main()
 					system("cls");
 					system("color C9");
 					printf("You Lose...\n");
+					Sleep(500);
+					printf("Keeped time:%.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
 					Sleep(1500);
 					return 0;
 				}
@@ -455,6 +457,8 @@ int main()
 			system("cls");
 			system("color C9");
 			printf("You Lose...\n");
+			Sleep(500);
+			printf("Keeped time:%.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
 			Sleep(1500);
 			return 0;
 		}
