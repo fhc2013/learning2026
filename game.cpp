@@ -282,7 +282,7 @@ int main()
 					system("color C9");
 					printf("You Lose...\n");
 					Sleep(500);
-					printf("Keeped time:%.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+					printf("Keeped time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
 					Sleep(1500);
 					return 0;
 				}
@@ -398,7 +398,7 @@ int main()
 			system("color E9");
 			printf("You Win!\n");
 			Sleep(500);
-			printf("Used time:%.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+			printf("Used time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
 			FILE* fp=fopen("Box_hiter.dat","a");
 			for(int o=1;o<=20;++o) fprintf(fp,"-");
 			fprintf(fp,"\n");
@@ -458,7 +458,7 @@ int main()
 			system("color C9");
 			printf("You Lose...\n");
 			Sleep(500);
-			printf("Keeped time:%.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+			printf("Keeped time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
 			Sleep(1500);
 			return 0;
 		}
