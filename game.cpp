@@ -85,6 +85,47 @@ void wrg()
 int hx,hy;
 char lft,rgt,hp,qt,ds;
 bool w,gr=true;
+void log(bool win) 
+{
+	FILE* fp=fopen("Box_hiter.dat","a");
+	for(int o=1;o<=20;++o) fprintf(fp,"-");
+	fprintf(fp,"\n");
+	fprintf(fp,"Username: %s\n",name);
+	fprintf(fp,"Used time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+	if(e==5) fprintf(fp,"Difficulty: difficult\n");
+	else
+	fprintf(fp,"Difficulty: easy\n");
+	if(win) fprintf(fp,"Status: Win\n");
+	else
+	fprintf(fp,"Status: Lose\n");
+	unsigned int rn=rnd();
+	while(rn)
+	{
+		int rem=rn%16;
+		if(rem<=9&&rem>=0) stk.push(rem+'0');
+		else
+		stk.push(cr[rem-10]);
+		rn/=16;
+	}
+	fprintf(fp,"Code: ");
+	while(stk.size())
+	{
+		fprintf(fp,"%c",stk.top());
+		stk.pop();
+	}
+	fprintf(fp,"\n");
+	time_t tm;
+	time(&tm);
+	string y(ctime(&tm));
+	fprintf(fp,y.c_str());
+	fprintf(fp,"Used ticks: %lld ticks\n",tk);
+	for(int o=1;o<=20;++o) fprintf(fp,"-");
+	fprintf(fp,"\n");
+	FILE* f2=fopen("player.dat","w");
+	fprintf(f2,name);
+	fclose(f2);
+	fclose(fp);
+}
 int main()
 {
 	for(int i=1;i<=15;++i) ch[1][i]=' ';
@@ -283,6 +324,7 @@ int main()
 					printf("You Lose...\n");
 					Sleep(500);
 					printf("Keeped time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
+					log(false);
 					Sleep(1500);
 					return 0;
 				}
@@ -399,41 +441,7 @@ int main()
 			printf("You Win!\n");
 			Sleep(500);
 			printf("Used time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
-			FILE* fp=fopen("Box_hiter.dat","a");
-			for(int o=1;o<=20;++o) fprintf(fp,"-");
-			fprintf(fp,"\n");
-			fprintf(fp,"Username: %s\n",name);
-			fprintf(fp,"Used time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
-			if(e==5) fprintf(fp,"Difficulty: difficult\n");
-			else
-			fprintf(fp,"Difficulty: easy\n");
-			unsigned int rn=rnd();
-			while(rn)
-			{
-				int rem=rn%16;
-				if(rem<=9&&rem>=0) stk.push(rem+'0');
-				else
-				stk.push(cr[rem-10]);
-				rn/=16;
-			}
-			fprintf(fp,"Code: ");
-			while(stk.size())
-			{
-				fprintf(fp,"%c",stk.top());
-				stk.pop();
-			}
-			fprintf(fp,"\n");
-			time_t tm;
-			time(&tm);
-			string y(ctime(&tm));
-			fprintf(fp,y.c_str());
-			fprintf(fp,"Used ticks: %lld ticks\n",tk);
-			for(int o=1;o<=20;++o) fprintf(fp,"-");
-			fprintf(fp,"\n");
-			FILE* f2=fopen("player.dat","w");
-			fprintf(f2,name);
-			fclose(f2);
-			fclose(fp);
+			log(true);
 			Sleep(2000);
 			return 0;
 		}
@@ -459,6 +467,7 @@ int main()
 			printf("You Lose...\n");
 			Sleep(500);
 			printf("Keeped time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
+			log(false);
 			Sleep(1500);
 			return 0;
 		}
