@@ -91,7 +91,9 @@ void log(bool win)
 	for(int o=1;o<=20;++o) fprintf(fp,"-");
 	fprintf(fp,"\n");
 	fprintf(fp,"Username: %s\n",name);
-	fprintf(fp,"Used time: %.2lf s\n",(clock()-d)/CLOCKS_PER_SEC);
+	if(win) fprintf(fp,"Used time: %.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
+	else
+	fprintf(fp,"Keeped time: %.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
 	if(e==5) fprintf(fp,"Difficulty: difficult\n");
 	else
 	fprintf(fp,"Difficulty: easy\n");
