@@ -120,7 +120,9 @@ void log(bool win)
 	time(&tm);
 	string y(ctime(&tm));
 	fprintf(fp,y.c_str());
-	fprintf(fp,"Used ticks: %lld ticks\n",tk);
+	if(win) fprintf(fp,"Used ticks: %lld ticks\n",tk);
+	else
+	fprintf(fp,"Keeped ticks: %lld ticks\n",tk);
 	for(int o=1;o<=20;++o) fprintf(fp,"-");
 	fprintf(fp,"\n");
 	FILE* f2=fopen("player.dat","w");
