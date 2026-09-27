@@ -444,7 +444,26 @@ int main()
 			system("color E9");
 			printf("You Win!\n");
 			Sleep(500);
-			printf("Used time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
+			double ts=((clock()-d)/CLOCKS_PER_SEC)-0.5;
+			printf("Used time:%.2lf s\n",ts);
+			FILE* rec=fopen("BH_Record.dat","r");
+			if(!rec)
+			{
+				printf("Break the record!\n");
+				FILE* wrc=fopen("BH_Record.dat","w");
+				fprintf(wrc,"%.2lf\n",ts);
+			}
+			else
+			{
+				double orec;
+				fscanf(rec,"%lf",&orec);
+				if(orec>ts)	
+				{
+					printf("Break the record!\n");
+					FILE* wrc=fopen("BH_Record.dat","w");
+					fprintf(wrc,"%.2lf\n",ts);					
+				}	
+			}
 			log(true);
 			Sleep(2000);
 			return 0;
