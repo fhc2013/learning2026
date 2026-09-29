@@ -446,11 +446,17 @@ int main()
 			Sleep(500);
 			double ts=((clock()-d)/CLOCKS_PER_SEC)-0.5;
 			printf("Used time:%.2lf s\n",ts);
-			FILE* rec=fopen("BH_Record.dat","r");
+			FILE* rec;
+			if(e==3) rec=fopen("Record_easy.dat","r");
+			else
+			rec=fopen("Record_dif.dat","r");
 			if(!rec)
 			{
 				printf("Break the record!\n");
-				FILE* wrc=fopen("BH_Record.dat","w");
+				FILE* wrc;
+				if(e==3) wrc=fopen("Record_easy.dat","w");
+				else
+				wrc=fopen("Record_dif.dat","w");
 				fprintf(wrc,"%.2lf\n",ts);
 			}
 			else
@@ -460,7 +466,10 @@ int main()
 				if(orec>ts)	
 				{
 					printf("Break the record!\n");
-					FILE* wrc=fopen("BH_Record.dat","w");
+					FILE* wrc;
+					if(e==3) wrc=fopen("Record_easy.dat","w");
+					else
+					wrc=fopen("Record_dif.dat","w");
 					fprintf(wrc,"%.2lf\n",ts);					
 				}	
 			}
