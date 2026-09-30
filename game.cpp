@@ -198,7 +198,13 @@ int main()
 		{
 			string q("Input your name:");
 			pr(q);
-			scanf("%990s",name);		
+			char nmc=' ';
+			int curnm=0;
+			while(nmc!='\n'&&curnm<990)
+			{
+				nmc=getchar();
+				if(nmc!='\n') name[curnm]=nmc,++curnm;
+			}		
 		}
 		Nm:
 		;
