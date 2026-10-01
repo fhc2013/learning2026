@@ -453,16 +453,24 @@ int main()
 			double ts=((clock()-d)/CLOCKS_PER_SEC)-0.5;
 			printf("Used time:%.2lf s\n",ts);
 			FILE* rec;
-			if(e==3) rec=fopen("Record_easy.dat","r");
+			string reasy;
+			string rdiff;
+			reasy.append("Record_easy_");
+			reasy.append(name);
+			reasy.append(".dat");
+			rdiff.append("Record_dif_");
+			rdiff.append(name);
+			rdiff.append(".dat");
+			if(e==3) rec=fopen(reasy.c_str(),"r");
 			else
-			rec=fopen("Record_dif.dat","r");
+			rec=fopen(rdiff.c_str(),"r");
 			if(!rec)
 			{
 				printf("Break the record!\n");
 				FILE* wrc;
-				if(e==3) wrc=fopen("Record_easy.dat","w");
+				if(e==3) wrc=fopen(reasy.c_str(),"w");
 				else
-				wrc=fopen("Record_dif.dat","w");
+				wrc=fopen(rdiff.c_str(),"w");
 				fprintf(wrc,"%.2lf\n",ts);
 			}
 			else
@@ -473,9 +481,9 @@ int main()
 				{
 					printf("Break the record!\n");
 					FILE* wrc;
-					if(e==3) wrc=fopen("Record_easy.dat","w");
+					if(e==3) wrc=fopen(reasy.c_str(),"w");
 					else
-					wrc=fopen("Record_dif.dat","w");
+					wrc=fopen(rdiff.c_str(),"w");
 					fprintf(wrc,"%.2lf\n",ts);					
 				}	
 			}
