@@ -186,7 +186,7 @@ int main()
     		name[sz]='\0';
     		string f("Welcome back, ");
     		f+=name;
-    		f+="\n";
+    		f+="!\n";
     		pr(f);
     		goto Ani;
 		}
@@ -231,7 +231,7 @@ int main()
 		rc=fopen(se.c_str(),"r");
 		r2=fopen(sd.c_str(),"r");
 		Sleep(500);
-		printf("Record(Easy mode):");
+		printf("Current Record(Easy mode):");
 		if(!rc) printf("No data\n");
 		else
 		{
@@ -239,8 +239,8 @@ int main()
 			fscanf(rc,"%lf",&er);
 			printf("%.2lf\n",er);
 		}
-		Sleep(500);
-		printf("Record(Difficult mode):");
+		Sleep(600);
+		printf("Current Record(Difficult mode):");
 		if(!r2) printf("No data\n");
 		else
 		{
@@ -250,7 +250,7 @@ int main()
 		}
 		fclose(rc);
 		fclose(r2);	
-		Sleep(500);
+		Sleep(1000);
 	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
