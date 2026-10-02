@@ -130,6 +130,18 @@ void log(bool win)
 	fclose(f2);
 	fclose(fp);
 }
+inline void geasy(string& reasy)
+{
+	reasy.append("Record_easy_");
+	reasy.append(name);
+	reasy.append(".dat");
+}
+inline void gdiff(string& rdiff)
+{
+	rdiff.append("Record_dif_");
+	rdiff.append(name);
+	rdiff.append(".dat");
+}
 int main()
 {
 	for(int i=1;i<=15;++i) ch[1][i]=' ';
@@ -176,7 +188,7 @@ int main()
     		f+=name;
     		f+="\n";
     		pr(f);
-    		goto Ann;
+    		goto Ani;
 		}
 	}
 	fclose(rd);
@@ -208,6 +220,36 @@ int main()
 		}
 		Nm:
 		;
+	}
+	Ani:
+	{
+		FILE* rc;
+		FILE* r2;
+		string se,sd;
+		geasy(se);
+		gdiff(sd);
+		rc=fopen(se.c_str(),"r");
+		r2=fopen(sd.c_str(),"r");
+		Sleep(500);
+		printf("Record(Easy mode):");
+		if(!rc) printf("No data\n");
+		else
+		{
+			double er;
+			fscanf(rc,"%lf",&er);
+			printf("%.2lf\n",er);
+		}
+		Sleep(500);
+		printf("Record(Difficult mode):");
+		if(!r2) printf("No data\n");
+		else
+		{
+			double er;
+			fscanf(r2,"%lf",er);
+			printf("%.2lf\n",er);
+		}
+		fclose(rc);
+		fclose(r2);	
 	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
@@ -455,12 +497,8 @@ int main()
 			FILE* rec;
 			string reasy;
 			string rdiff;
-			reasy.append("Record_easy_");
-			reasy.append(name);
-			reasy.append(".dat");
-			rdiff.append("Record_dif_");
-			rdiff.append(name);
-			rdiff.append(".dat");
+			geasy(reasy);
+			gdiff(rdiff);
 			if(e==3) rec=fopen(reasy.c_str(),"r");
 			else
 			rec=fopen(rdiff.c_str(),"r");
