@@ -250,6 +250,7 @@ int main()
 		}
 		fclose(rc);
 		fclose(r2);	
+		Sleep(500);
 	}
 	Ann:
 	string r("Decide the mode: 1 for difficult,and 0 for easy\n");
