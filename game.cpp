@@ -204,7 +204,11 @@ int main()
 			int gx=rnd()%9+1;
 			char r=gx+'0';
 			name[5]=r;
-			name[6]='\0';
+			int gy=rnd()%4+1;
+			char q=gy+'0';
+			name[6]=q;
+			name[7]='\0';
+			printf("Your default name is: %s\n",name);
 			goto Nm;		
 		}
 		{
