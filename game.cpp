@@ -6,6 +6,7 @@ char ch[17][17];
 char name[1005];
 random_device rd;
 bool def,dsp=true;
+int gs;
 mt19937 rnd(rd());
 long long cnt,tk;
 set<pair<int,int> >mp;
@@ -71,6 +72,11 @@ void disp()
 		else
 		printf("easy\n");
 		if(_dec&&e==5) printf("%d ticks to lose 1 point",rg-_dec);
+		if(gs)
+		{
+			printf("You had already got a score in this position\n");
+			--gs;
+		}
 	}
 }
 inline void pr(string str)
@@ -483,6 +489,8 @@ int main()
 							cbtm=30;							
 						}
 					}
+					else
+					gs=12;
 					printf("\a");
 				}
 			}
