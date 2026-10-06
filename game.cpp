@@ -63,7 +63,7 @@ void disp()
 		if(cbtm>=25) printf("Combo time!\n");
 		if(tk>=3000)
 		{
-			printf("Remaining ticks: ");
+			printf("Remaining ticks to lose: ");
 			for(int i=1;i<=3020-tk;++i) printf("U");
 			printf("\n");
 		}
@@ -93,7 +93,7 @@ char lft,rgt,hp,qt,ds;
 bool w,gr=true;
 void log(bool win) 
 {
-	FILE* fp=fopen("Box_hiter.dat","a");
+	FILE* fp=fopen("Box_hiter.log","a");
 	for(int o=1;o<=20;++o) fprintf(fp,"-");
 	fprintf(fp,"\n");
 	fprintf(fp,"Username: %s\n",name);
