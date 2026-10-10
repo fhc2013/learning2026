@@ -202,6 +202,7 @@ int main()
 		int xx=MessageBox(NULL,"Do you want to use default name?","Default name",MB_YESNO);
 		if(xx==IDYES)
 		{
+			Cname:
 			name[0]='G';
 			name[1]='u';
 			name[2]='e';
@@ -214,7 +215,18 @@ int main()
 			char q=gy+'0';
 			name[6]=q;
 			name[7]='\0';
-			printf("Your default name is: %s\n",name);
+			string cd("Your default name is: ");
+			pr(cd);
+			printf("%s\n",name);
+			Sleep(500);
+			string cg("Do you want to change it? Press c to change,and other keys to continue\n");
+			pr(cg);
+			char qg=_getch();
+			if(qg=='c'||qg=='C')
+			{
+				system("cls");
+				goto Cname;
+			}
 			goto Nm;		
 		}
 		{
