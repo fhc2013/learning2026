@@ -215,14 +215,12 @@ int main()
 			char q=gy+'0';
 			name[6]=q;
 			name[7]='\0';
-			string cd("Your default name is: ");
+			string cd("Your current default name is: ");
 			pr(cd);
 			printf("%s\n",name);
 			Sleep(500);
-			string cg("Do you want to change it? Press c to change,and other keys to continue\n");
-			pr(cg);
-			char qg=_getch();
-			if(qg=='c'||qg=='C')
+			int qg=MessageBox(NULL,"Do you want to change it? Press Yes to change,and press No to continue\n","Change name",MB_YESNO);
+			if(qg==IDYES)
 			{
 				system("cls");
 				goto Cname;
