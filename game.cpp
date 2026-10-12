@@ -392,6 +392,7 @@ int main()
 				_dec=0;
 				if(cnt<0)
 				{
+					SetConsoleTitleA("You Lose");
 					system("cls");
 					system("color C9");
 					printf("You Lose...\n");
@@ -510,6 +511,7 @@ int main()
 		if(ch[hx+2][hy]=='#') gr=true;
 		if(cnt>=e)
 		{
+			SetConsoleTitleA("You Win");
 			printf("\a");
 			system("cls");
 			system("color E9");
@@ -569,6 +571,7 @@ int main()
 		}
 		if(tk>=3020)
 		{
+			SetConsoleTitleA("You Lose");
 			system("cls");
 			system("color C9");
 			printf("You Lose...\n");
