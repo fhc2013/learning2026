@@ -284,6 +284,9 @@ int main()
 		Sleep(1000);
 		goto Ann;
 	}
+	bool wlog=true;
+	int wl=MessageBox(NULL,"Do you want to write this play to the log?","Write log",MB_YESNO);
+	if(wl==IDNO) wlog=false;
 	int qry=MessageBox(NULL,"Do You Want To Use Default Keys?\n(a for left,d for right,q for quit and f for jump,s for display set,range is 20)","Settings",MB_YESNO);
 	if(qry==IDYES)
 	{
@@ -398,7 +401,7 @@ int main()
 					printf("You Lose...\n");
 					Sleep(500);
 					printf("Keeped time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
-					log(false);
+					if(wlog) log(false);
 					Sleep(1500);
 					return 0;
 				}
@@ -550,7 +553,7 @@ int main()
 					fprintf(wrc,"%.2lf\n",ts);					
 				}	
 			}
-			log(true);
+			if(wlog) log(true);
 			Sleep(2000);
 			return 0;
 		}
@@ -577,7 +580,7 @@ int main()
 			printf("You Lose...\n");
 			Sleep(500);
 			printf("Keeped time:%.2lf s\n",((clock()-d)/CLOCKS_PER_SEC)-0.5);
-			log(false);
+			if(wlog) log(false);
 			Sleep(1500);
 			return 0;
 		}
