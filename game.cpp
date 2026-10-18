@@ -532,7 +532,7 @@ int main()
 			rec=fopen(rdiff.c_str(),"r");
 			if(!rec)
 			{
-				printf("Break the record!\n");
+				printf("The first record!\n");
 				FILE* wrc;
 				if(e==3) wrc=fopen(reasy.c_str(),"w");
 				else
