@@ -162,20 +162,24 @@ int main()
 		{
 			string gd("Welcome to Box Hiter!\n");
 			pr(gd);
-			string rt("press s to start the game");
+			string rt("press s to start the game,and other keys to exit");
 			pr(rt);
 		}
 		else
 		{
 			printf("Welcome to Box Hiter!\n");
-			printf("press s to start the game");			
+			printf("press s to start the game,and other keys to exit");			
 		}
 		for(int i=1;i<=rnd()%3+1;++i) printf("."),Sleep(500);
 		printf("\n");
 		firs=false;
 	}while(!_kbhit());
 	read=_getch();
-	if(read!='s'&&read!='S') return 0;
+	if(read!='s'&&read!='S')
+	{
+		int ex=MessageBox(NULL,"Do you really want to exit?","Exit option",MB_YESNO);
+		if(ex==IDYES) return 0;
+	}
 	system("cls");
 	system("color B9");
 	SetConsoleTitleA("Settings");
